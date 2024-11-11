@@ -45,4 +45,4 @@ Este repositório contém a implementação do backend para o sistema de gestão
 
 1. Clone este repositório:
    ```bash
-   git clone https://github.com/RafaSS/GestaoFinanceiraApp-BackEnd/.git
+   git clone https://github.com/RafaSS/GestaoFinanceiraApp-BackEnd.git
