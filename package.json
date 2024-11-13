@@ -4,7 +4,8 @@
   "description": "Este repositório contém a implementação do backend para o sistema de gestão financeira, responsável pelo processamento dos dados financeiros, controle de autenticação e autorização dos usuários, além do armazenamento e gestão de transações e categorias financeiras.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest test",
+    "test:watch": "vitest test --watch",
     "dev": "tsx src/server.ts"
   },
   "keywords": [],
@@ -15,7 +16,9 @@
     "@types/pg": "^8.11.10",
     "drizzle-kit": "^0.28.0",
     "tsx": "^4.19.2",
-    "typescript": "^5.6.3"
+    "typescript": "^5.6.3",
+    "vite-tsconfig-paths": "^5.1.2",
+    "vitest": "^2.1.4"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
