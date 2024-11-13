@@ -15,6 +15,13 @@
       "when": 1731503122935,
       "tag": "0001_new_luke_cage",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1731520783791,
+      "tag": "0002_deep_cobalt_man",
+      "breakpoints": true
     }
   ]
 }
