@@ -1,0 +1,13 @@
+# docker run --name transactionsDB -e POSTGRESQL_USERNAME=docker -e POSTGRESQL_PASSWORD=docker -e POSTGRESQL_DATABASE=finance -p 5432:5432 bitnami/postgresql
+
+version: '3'
+
+services:
+  transactionsDB:
+    image: bitnami/postgresql
+    environment:
+      - POSTGRESQL_USERNAME=docker
+      - POSTGRESQL_PASSWORD=docker
+      - POSTGRESQL_DATABASE=finance
+    ports:
+      - 5432:5432
