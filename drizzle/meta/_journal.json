@@ -5,22 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1731502997315,
-      "tag": "0000_tan_shadowcat",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1731503122935,
-      "tag": "0001_new_luke_cage",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1731520783791,
-      "tag": "0002_deep_cobalt_man",
+      "when": 1731891646763,
+      "tag": "0000_awesome_stardust",
       "breakpoints": true
     }
   ]

@@ -1,10 +1,11 @@
 import { FastifyInstance } from 'fastify'
+import { RegisterController } from './register.controller'
 
 
 // import { registerController } from './register.controller'
 
-export async function gymRoutes(app: FastifyInstance) {
+export async function userRoutes(app: FastifyInstance) {
 
-//   app.get('/user/', registerController)
+   app.post('/users', RegisterController)
 
 }

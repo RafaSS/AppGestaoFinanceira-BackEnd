@@ -14,10 +14,10 @@ export class InmemoryUsersRepository implements UsersRepository {
         return user
     }
 
-    async findById(_id: string): Promise<InferSelectModel<typeof User> | null> {
-        const user = this.users.find((user) => user.id === _id)
+    async findById(_id: string): Promise<InferSelectModel<typeof User>[] | null> {
+        const user = this.users.filter((user) => user.id === _id)
 
-        if (!user) {
+        if (user.length === 0) {
             return null
         }
         return user

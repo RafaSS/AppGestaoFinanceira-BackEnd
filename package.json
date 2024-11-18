@@ -15,6 +15,7 @@
     "@types/bcryptjs": "^2.4.6",
     "@types/node": "^22.9.0",
     "@types/pg": "^8.11.10",
+    "@types/supertest": "^6.0.2",
     "drizzle-kit": "^0.28.0",
     "tsx": "^4.19.2",
     "typescript": "^5.6.3",
@@ -27,6 +28,7 @@
     "drizzle-orm": "^0.36.1",
     "fastify": "^5.1.0",
     "pg": "^8.13.1",
+    "supertest": "^7.0.0",
     "zod": "^3.23.8"
   }
 }
