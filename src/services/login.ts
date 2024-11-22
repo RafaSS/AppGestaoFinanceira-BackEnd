@@ -1,38 +1,34 @@
-import { hash } from 'bcryptjs'
+import { compare, hash } from 'bcryptjs'
 import { UsersRepository } from '@/repositories/userRepository'
 import { User } from '@/db/schema'
 import { InferInsertModel } from 'drizzle-orm'
 
-interface RegisterUseCaseRequest {
-    username: string
+interface LoginUseCaseRequest {
     email: string
     password: string
 }
 
-interface RegisterUseCaseResponse {
+interface LoginUseCaseResponse {
     user: InferInsertModel<typeof User>
 }
-export class RegisterUseCase {
+export class LoginUseCase {
     constructor(private usersRepository: UsersRepository) { }
 
     async execute({
-        username,
         email,
         password,
-    }: RegisterUseCaseRequest): Promise<RegisterUseCaseResponse> {
-        const password_hash = await hash(password, 6)
-
-        const userWithSameEmail = await this.usersRepository.findByEmail(email)
-
-        if (userWithSameEmail) {
-            throw new Error('User already exists')
+    }: LoginUseCaseRequest): Promise<LoginUseCaseResponse> {
+        const user = await this.usersRepository.findByEmail(email);
+        
+        if (!user) {            
+            throw new Error('User or password incorrect.')
         }
 
-        const user = await this.usersRepository.create({
-            username,
-            email,
-            password_hash,
-        })
+        const passwordExists = await compare(password, user.password_hash);
+        
+        if(!passwordExists) {
+            throw new Error('User or password incorrect.')
+        }
 
         return { user }
     }
