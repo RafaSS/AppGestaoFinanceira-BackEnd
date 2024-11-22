@@ -12,6 +12,7 @@ describe('DepositUseCase', () => {
             email: 'carlim@gmail.com',
             username: 'carlim',
             password_hash: '123456',
+            balance: '10'
         })
 
         console.log(user)
@@ -28,7 +29,7 @@ describe('DepositUseCase', () => {
 
         
 
-        expect(response.user.balance).toBe('20')
+        expect(response.user.balance).toBe('30')
 
     })
 })

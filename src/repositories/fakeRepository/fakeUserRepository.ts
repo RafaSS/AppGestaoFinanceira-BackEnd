@@ -29,7 +29,7 @@ export class InmemoryUsersRepository implements UsersRepository {
             username: data.username,
             email: data.email,
             password_hash: data.password_hash,
-            balance: "0",
+            balance: data.balance ?  data.balance : '0'
         }
 
         this.users.push(user)
