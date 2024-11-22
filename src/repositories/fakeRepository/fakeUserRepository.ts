@@ -14,13 +14,13 @@ export class InmemoryUsersRepository implements UsersRepository {
         return user
     }
 
-    async findById(_id: string): Promise<InferSelectModel<typeof User>[] | null> {
+    async findById(_id: string): Promise<InferSelectModel<typeof User> | null> {
         const user = this.users.filter((user) => user.id === _id)
 
         if (user.length === 0) {
             return null
         }
-        return user
+        return user[0]
     }
 
     async create(data: InferInsertModel<typeof User>): Promise<InferInsertModel<typeof User>> {
@@ -33,6 +33,18 @@ export class InmemoryUsersRepository implements UsersRepository {
         }
 
         this.users.push(user)
+        return user
+    }
+
+    async updateBalance(id: string, balance: number): Promise<InferInsertModel<typeof User>> {
+        const user = this.users.find((user) => user.id === id)
+
+        if (!user) {
+            throw new Error('User not found')
+        }
+
+        user.balance = balance.toString()
+
         return user
     }
 }
