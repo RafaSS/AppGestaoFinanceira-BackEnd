@@ -26,9 +26,6 @@ describe('DepositUseCase', () => {
             user_id: user.id as string,
             value: 10
         })
-
-        
-
         expect(response.user.balance).toBe('30')
 
     })

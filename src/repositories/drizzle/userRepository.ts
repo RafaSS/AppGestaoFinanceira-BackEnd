@@ -6,14 +6,25 @@ import { randomUUID } from "crypto"
 
 
 export class UserRepository implements UsersRepository {
+    async updateBalance(id: string, balance: number): Promise<InferInsertModel<typeof User>> {
+        const user = await db.select().from(User).where(eq(User.id, id)).execute()
 
-    async findById(_id: string): Promise<InferSelectModel<typeof User>[] | null> {
+        if (user.length === 0) {
+            throw new Error('User not found')
+        }
+
+        user[0].balance = balance.toString()
+        await db.update(User).set(user[0]).where(eq(User.id, id)).execute()
+        return user[0]
+    }
+
+    async findById(_id: string): Promise<InferSelectModel<typeof User> | null> {
         const user = await db.select().from(User).where(eq(User.id, _id)).execute()
 
         if (user.length === 0) {
             return null
         }
-        return user
+        return user[0] as InferSelectModel<typeof User>
     }
 
     async findByEmail(email: string): Promise<InferSelectModel<typeof User> | null> {
