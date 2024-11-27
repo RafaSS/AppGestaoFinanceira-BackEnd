@@ -34,6 +34,7 @@ describe('Transaction Routes (e2e)', () => {
     });
 
     afterAll(async () => {
+
         await app.close();
     });
 
