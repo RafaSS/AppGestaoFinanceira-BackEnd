@@ -8,14 +8,13 @@ export async function FindOneController(req: FastifyRequest, reply: FastifyReply
     const transactionBody = z.object({
         id: z.string(),
     });
-
-    const { id } = transactionBody.parse(req.body);
-
+    const { id } = transactionBody.parse(req.params as { id: string });
     const depositUseCase = new FindOneTransactionUseCase(new TransactionRepository);
+
     try {
         const user = await depositUseCase.execute({ id });
 
-        reply.code(201).send({ user });
+        reply.code(200).send({ user });
     } catch (error) {
         if (error instanceof Error) {
             reply.code(400).send({ message: error.message });

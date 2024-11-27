@@ -22,9 +22,9 @@ export async function CreateTransactionController(req: FastifyRequest, reply: Fa
         reply.code(201).send({ user });
     } catch (error) {
         if (error instanceof Error) {
-            reply.code(400).send({ message: error.message });
+            reply.code(400).send({  error });
         } else {
-            reply.code(400).send({ message: 'An unknown error occurred' });
+            reply.code(400).send({ error });
         }
     }
 }

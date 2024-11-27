@@ -15,7 +15,6 @@ describe('DepositUseCase', () => {
             balance: '10'
         })
 
-        console.log(user)
 
         await depositUseCase.execute({
             user_id: user.id as string,

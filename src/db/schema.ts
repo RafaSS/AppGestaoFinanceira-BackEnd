@@ -14,7 +14,7 @@ export const Transaction = pgTable("transactionsTable", {
   fromUserId: uuid().notNull().references(() => User.id),
   toUserId: uuid().notNull().references(() => User.id),
   amount: decimal({ precision: 10, scale: 2 }).notNull(),
-  transactionDate: varchar({ length: 50 }).notNull(), // This could be timestamp
+  transactionDate: varchar({ length: 50 }).notNull(),
   description: varchar({ length: 255 }),
 }, (table) => ({
   fkFromUser: foreignKey({ columns: [table.fromUserId], foreignColumns: [User.id] }),

@@ -4,10 +4,10 @@ import { FindOneController } from './findOne.controller';
 import { FindAllController } from './getAll.controller';
 
 
-export async function userRoutes(app: FastifyInstance) {
+export async function transactionRoutes(app: FastifyInstance) {
 
-    app.post('/users', CreateTransactionController)
-    app.get('/users', FindAllController)
-    app.get('/users/:id', FindOneController)
+    app.post('/transaction', CreateTransactionController)
+    app.get('/transactionAll/:user_id', FindAllController)
+    app.get('/transaction/:id', FindOneController)
 
 }

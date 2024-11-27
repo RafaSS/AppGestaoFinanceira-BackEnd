@@ -9,10 +9,11 @@ export async function FindAllController(req: FastifyRequest, reply: FastifyReply
         user_id: z.string(),
     });
 
-    const { user_id } = transactionBody.parse(req.body);
+    const { user_id } = transactionBody.parse(req.params as { user_id: string });
 
     const depositUseCase = new FindAllTransactionsUseCase(new TransactionRepository);
     try {
+        
         const user = await depositUseCase.execute({ user_id });
 
         reply.code(201).send({ user });

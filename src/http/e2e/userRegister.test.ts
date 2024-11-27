@@ -2,11 +2,12 @@ import { describe, expect, beforeAll, afterAll, it } from 'vitest';
 import request from 'supertest';
 import { app } from '@/server';
 import { db } from '@/db';
-import { User } from '@/db/schema';
+import { User,Transaction } from '@/db/schema';
 
 describe('Register (e2e)', () => {
     beforeAll(async () => {
         await app.ready()
+        await db.delete(Transaction)
         await db.delete(User)
 
     })
@@ -20,7 +21,6 @@ describe('Register (e2e)', () => {
             email: '5UfZt@example.com',
             password: '123456',
         })
-        console.log(response.body)
         expect(response.statusCode).toEqual(201)
     })
 
@@ -35,7 +35,6 @@ describe('Register (e2e)', () => {
             email: 'joaozinho@example.com',
             password: '123456',
         })
-        console.log(response.body)
         expect(response.statusCode).toEqual(201)
     })
 })
